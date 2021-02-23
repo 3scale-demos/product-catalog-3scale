@@ -11,7 +11,6 @@ bases:
 
 resources:
 - namespace.yaml
-- api-url-config-sealed-secret.yaml
 
 patchesJson6902:
 - target:
