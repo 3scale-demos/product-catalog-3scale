@@ -1,0 +1,17 @@
+export KEY=<Put 3scale access key here>
+export ADMIN_DOMAIN=apidemo3-admin.3scale.net
+export DOMAIN_WILDCARD=apps.home.ocplab.com
+
+echo "Connecting to -d=https://${KEY}@${ADMIN_DOMAIN}"
+
+podman run registry.redhat.io/3scale-amp2/toolbox-rhel7:3scale2.9 \
+  3scale import openapi \
+    --override-private-base-url=http://server:8080 \
+    -t product-catalog \
+    --production-public-base-url=http://apicast-prod-product-catalog.${DOMAIN_WILDCARD} \
+    --staging-public-base-url=http://apicast-stage-product-catalog.${DOMAIN_WILDCARD} \
+    --activedocs-hidden \
+    --default-credentials-userkey=test \
+    -d https://${KEY}@${ADMIN_DOMAIN} \
+    https://raw.githubusercontent.com/gnunn-gitops/product-catalog-3scale/master/docs/swagger/openapi-3.0.json
+cat ~/.bashrc   

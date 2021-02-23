@@ -29,4 +29,16 @@ oc create secret generic apicast-configuration-url-secret --from-literal=passwor
 ```
 kustomize build clusters/overlays/<your-cluster-name>/3scale
 ```
+6. I would recommend changing the environment settings on the apicast-prod to use `APICAST_CONFIGURATION_LOADER=lazy` and `APICAST_CONFIGURATION_CACHE=0` so it reloads on each request so you can test changes.
 
+7. Import the API into your 3scale instance using the included `scripts/import-product-catalog-api` script. Note you need to update the environment variables in the script to match your installation.
+
+8. Go into the 3scale admin portal and create application plans using API keys. I usually create two plans, one unlimited plan and one trial plan limiting the rate to 5 per second. Publish the application plans when finished.
+
+9. Update the Policy for the integration to include the CORS policy first (leave origin blank) and remove the unauthenticated policy
+
+10. Create a group in Audience along with a User and add a couple of applications, I typically create a Test app using the Trial plan and a Production app using the Unlimited plan. Edit the application key for the Production app to be `18de534a3ed3131245a2ecc7638853c1`, this is what is configured in the client. If you do not want to use this key you need to update the client config map with the desired key and restart the client pod.
+
+10. 
+
+9. 
