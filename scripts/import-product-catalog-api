@@ -14,4 +14,3 @@ podman run registry.redhat.io/3scale-amp2/toolbox-rhel7:3scale2.9 \
     --default-credentials-userkey=test \
     -d https://${KEY}@${ADMIN_DOMAIN} \
     https://raw.githubusercontent.com/gnunn-gitops/product-catalog-3scale/master/docs/swagger/openapi-3.0.json
-cat ~/.bashrc   
