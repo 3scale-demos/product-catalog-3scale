@@ -12,3 +12,10 @@ resources:
 
 patchesStrategicMerge:
 - patch.yaml
+
+patches:
+  - path: patch-tls-termination.yaml
+    target:
+      group: route.openshift.io
+      version: v1
+      kind: Route
