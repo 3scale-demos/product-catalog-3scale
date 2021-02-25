@@ -113,6 +113,18 @@
              "tags": [
                 "Categories"
              ],
+             "parameters": [
+               {
+                 "name": "user_key",
+                 "description": "Your access API Key",
+                 "in": "header",
+                 "x-data-threescale-name": "user_keys",
+                 "required": true,
+                 "schema":{
+                    "type": "string"
+                 }
+               }
+             ],
              "responses": {
                 "200": {
                    "description": "OK",
