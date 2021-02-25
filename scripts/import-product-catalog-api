@@ -8,9 +8,8 @@ podman run registry.redhat.io/3scale-amp2/toolbox-rhel7:3scale2.9 \
   3scale import openapi \
     --override-private-base-url=http://server:8080 \
     -t product-catalog \
-    --production-public-base-url=http://apicast-prod-product-catalog.${DOMAIN_WILDCARD} \
-    --staging-public-base-url=http://apicast-stage-product-catalog.${DOMAIN_WILDCARD} \
-    --activedocs-hidden \
+    --production-public-base-url=https://apicast-prod-product-catalog.${DOMAIN_WILDCARD} \
+    --staging-public-base-url=https://apicast-stage-product-catalog.${DOMAIN_WILDCARD} \
     --default-credentials-userkey=test \
     -d https://${KEY}@${ADMIN_DOMAIN} \
     https://raw.githubusercontent.com/gnunn-gitops/product-catalog-3scale/master/docs/swagger/openapi-3.0.json

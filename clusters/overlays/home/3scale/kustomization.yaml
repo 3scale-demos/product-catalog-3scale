@@ -13,9 +13,16 @@ resources:
 patchesStrategicMerge:
 - patch.yaml
 
-patches:
+patchesJson6902:
   - path: patch-tls-termination.yaml
     target:
       group: route.openshift.io
       version: v1
       kind: Route
+      name: apicast-prod
+  - path: patch-tls-termination.yaml
+    target:
+      group: route.openshift.io
+      version: v1
+      kind: Route
+      name: apicast-stage
