@@ -35,10 +35,8 @@ kustomize build clusters/overlays/<your-cluster-name>/3scale
 
 8. Go into the 3scale admin portal and create application plans using API keys. I usually create two plans, one unlimited plan and one trial plan limiting the rate to 5 per second. Publish the application plans when finished.
 
-9. Update the Policy for the integration to include the CORS policy first (leave origin blank) and remove the unauthenticated policy
+9. Update the Policy for the integration to include the CORS policy first (leave origin blank) and remove the anonymous policy
 
-10. Create a group in Audience along with a User and add a couple of applications, I typically create a Test app using the Trial plan and a Production app using the Unlimited plan. Edit the application key for the Production app to be `18de534a3ed3131245a2ecc7638853c1`, this is what is configured in the client. If you do not want to use this key you need to update the client config map with the desired key and restart the client pod.
+10. Create a group in Audience along with a User and add an application, I typically create a Test app using the Trial plan and a Production app using the Unlimited plan. Edit the application key for the Production app to be `18de534a3ed3131245a2ecc7638853c1`, this is what is configured in the client. If you do not want to use this key you need to update the client config map with the desired key and restart the client pod. Depending on your account and app settings you may need to approve the new group and application in the admin portal.
 
-10. 
-
-9. 
+11. Test the nodejs application to ensure it shows the product listing. If it's stuck on "loading..." use the Developer tools to see what's happening.
