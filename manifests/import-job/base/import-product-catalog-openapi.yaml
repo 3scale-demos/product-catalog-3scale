@@ -1,0 +1,40 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: import-product-catalog
+spec:
+  template:
+    spec:
+      containers:
+        - image: registry.redhat.io/3scale-amp2/toolbox-rhel7:3scale2.8
+          command:
+            - /bin/bash
+            - -c
+            - |
+              echo "Connecting to https://${ACCESS_TOKEN}@${ADMIN_DOMAIN}"
+
+              3scale import openapi \
+                --override-private-base-url=http://server:8080 \
+                -t product-catalog \
+                --production-public-base-url=https://apicast-prod-${PRODUCT_CATALOG_PROJECT}.${DOMAIN_WILDCARD} \
+                --staging-public-base-url=https://apicast-stage-${PRODUCT_CATALOG_PROJECT}.${DOMAIN_WILDCARD} \
+                --default-credentials-userkey=test \
+                -d https://${ACCESS_TOKEN}@${ADMIN_DOMAIN} \
+                -k \
+                https://raw.githubusercontent.com/gnunn-gitops/product-catalog-3scale/master/docs/swagger/openapi-3.0.json
+          imagePullPolicy: Always
+          name: import-product-catalog
+          env:
+          - name: ACCESS_TOKEN
+            value: "xxxxxxx"
+          - name: ADMIN_DOMAIN
+            value: "3scale-admin.3scale.apps.home.ocplab.com"
+          - name: DOMAIN_WILDCARD
+            value: "apps.home.ocplab.com"
+          - name: PRODUCT_CATALOG_PROJECT
+            value: "product-catalog"
+      dnsPolicy: ClusterFirst
+      restartPolicy: OnFailure
+      serviceAccount: default
+      serviceAccountName: default
+      terminationGracePeriodSeconds: 30
