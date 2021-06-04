@@ -2,11 +2,11 @@
 
 This is a 3scale demo that leverages the product-catalog application which is used in some of my gitops demos. This demo places an APICast gateway between the nodejs client and the quarkus backend to manage API access.
 
-![alt text](https://raw.githubusercontent.com/gnunn-gitops/product-catalog-3scale/master/docs/img/product-catalog-3scale-screenshot.png.png)
+![alt text](https://raw.githubusercontent.com/gnunn-gitops/product-catalog-3scale/master/docs/img/product-catalog-3scale-screenshot.png)
 
 The topology view in OpenShift shows the three tiers of the application along with the apicast gateways:
 
-![alt text](https://raw.githubusercontent.com/gnunn-gitops/product-catalog/master/docs/img/product-catalog-3scale-topology.png)
+![alt text](https://raw.githubusercontent.com/gnunn-gitops/product-catalog-3scale/master/docs/img/product-catalog-3scale-topology.png)
 
 
 ### Pre-Requisities
@@ -26,7 +26,7 @@ To use this demo perform the following steps:
 4. Install the application using kustomize:
 
 ```
-kustomize build clusters/overlays/<your-cluster-name>/3scale
+kustomize build clusters/<your-cluster-name>/overlays/3scale
 ```
 
 5. You will need to provide a secret in order for the apicast gateway to connect to your API Manager portal, I'm currently using a sealed-secret in `api-url-config-sealed-secret.yaml`. You will need to create your own, creating a secret is covered in the 3scale documentation (here)[https://access.redhat.com/documentation/en-us/red_hat_3scale_api_management/2.9/html/installing_3scale/running-apicast-on-red-hat-openshift#deploying-apicast-using-the-openshift-template].
