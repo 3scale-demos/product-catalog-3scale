@@ -1,4 +1,4 @@
-export KEY=<Put 3scale access key here>
+export KEY=<3SCALE TOKEN>
 export ADMIN_DOMAIN=apidemo3-admin.3scale.net
 export DOMAIN_WILDCARD=apps.home.ocplab.com
 

@@ -3,10 +3,20 @@ kind: Kustomization
 
 namespace: product-catalog-3scale
 
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    app.kubernetes.io/part-of: product-catalog
+
+configMapGenerator:
+- name: client
+  files:
+    - client-config/config.js
+
 bases:
-- https://github.com/gnunn-gitops/product-catalog/manifests/app/database/base
-- https://github.com/gnunn-gitops/product-catalog/manifests/app/server/base
-- https://github.com/gnunn-gitops/product-catalog/manifests/app/client/base
+- https://github.com/gnunn-gitops/product-catalog/components/apps/database/base
+- https://github.com/gnunn-gitops/product-catalog/components/apps/server/base
+- https://github.com/gnunn-gitops/product-catalog/components/apps/client/base
 - https://github.com/redhat-canada-gitops/catalog/apicast/overlays/default
 
 resources:

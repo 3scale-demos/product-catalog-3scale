@@ -6,10 +6,6 @@ namespace: product-catalog
 bases:
 - ../../../../environments/overlays/3scale
 
-resources:
-- user-rolebinding.yaml
-- api-url-config-sealed-secret.yaml
-
 patchesStrategicMerge:
 - patch.yaml
 

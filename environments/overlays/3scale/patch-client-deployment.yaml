@@ -6,5 +6,16 @@
   value:
     app.openshift.io/connects-to: 3scale-gateway-prod
     app.openshift.io/vcs-ref: master
-    app.openshift.io/vcs-uri: https://github.com/gnunn-gitops/product-catalog-client  
-  
+    app.openshift.io/vcs-uri: https://github.com/gnunn-gitops/product-catalog-client
+- op: add
+  path: /spec/template/spec/volumes
+  value:
+    - configMap:
+        name: client
+      name: config-data
+- op: add
+  path: /spec/template/spec/containers/0/volumeMounts
+  value:
+    - mountPath: /opt/app-root/src/config.js
+      name: config-data
+      subPath: config.js
