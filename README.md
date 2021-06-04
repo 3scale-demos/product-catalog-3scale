@@ -26,7 +26,7 @@ To use this demo perform the following steps:
 4. Install the application using kustomize:
 
 ```
-kustomize build clusters/<your-cluster-name>/overlays/3scale
+kustomize build clusters/<your-cluster-name>/overlays/3scale | oc apply -f -
 ```
 
 5. You will need to provide a secret in order for the apicast gateway to connect to your API Manager portal, I'm currently using a sealed-secret in `api-url-config-sealed-secret.yaml`. You will need to create your own, creating a secret is covered in the 3scale documentation (here)[https://access.redhat.com/documentation/en-us/red_hat_3scale_api_management/2.9/html/installing_3scale/running-apicast-on-red-hat-openshift#deploying-apicast-using-the-openshift-template].
