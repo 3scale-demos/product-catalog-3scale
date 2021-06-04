@@ -2,11 +2,11 @@
 
 This is a 3scale demo that leverages the product-catalog application which is used in some of my gitops demos. This demo places an APICast gateway between the nodejs client and the quarkus backend to manage API access.
 
-![alt text](https://raw.githubusercontent.com/gnunn-gitops/product-catalog-3scale/master/docs/img/product-catalog-screenshot.png)
+![alt text](https://raw.githubusercontent.com/gnunn-gitops/product-catalog-3scale/master/docs/img/product-catalog-3scale-screenshot.png.png)
 
 The topology view in OpenShift shows the three tiers of the application along with the apicast gateways:
 
-![alt text](https://raw.githubusercontent.com/gnunn-gitops/product-catalog/master/docs/img/product-catalog-topology.png)
+![alt text](https://raw.githubusercontent.com/gnunn-gitops/product-catalog/master/docs/img/product-catalog-3scale-topology.png)
 
 
 ### Pre-Requisities
